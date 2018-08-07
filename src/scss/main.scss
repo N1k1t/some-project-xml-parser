@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,900&subset=cyrillic');
+@import '_core.scss';
+
+$c1: #A19C6E;
+
+*{
+	font-family: Roboto;
+}
+
+html{
+	font-size: 14px;
+}
+body{
+	background-image: url('/img/bg.jpg');
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+section{
+	padding: 2rem;
+	width: 40rem;
+	background-color: #fff;
+	border-radius: 1rem;
+}
+p{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+
+	@for $i from 1 through 15{
+		&:nth-of-type(#{$i}) b.bold{
+			background-color: adjust-hue($c1, ($i - 1) * 10);
+		}
+	}
+}
+h1{
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 300;
+	color: $c1;
+}
+b{
+	color: $c1;
+	width: 20rem;
+	display: inline-block;
+	margin-right: 3rem;
+	font-weight: 500;
+
+	&.bold{
+		// background-color: $c1;
+		width: 7rem;
+		padding: .5rem;
+		border-radius: 10rem;
+		color: #fff;
+		text-align: center;
+		margin-right: 0;
+	}
+}

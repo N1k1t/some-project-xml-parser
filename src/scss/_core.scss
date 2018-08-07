@@ -1,0 +1,232 @@
+$c1: #000;
+
+.default{
+	font-family: Roboto;
+}
+.hidden{
+	visibility: hidden;
+}
+.shadow{
+	opacity: .3;
+}
+.disabled{
+	pointer-events: none;
+	opacity: .3;
+}
+.ziped{
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	height: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+.easeOutExpo{
+	transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+*:focus{
+	outline: none;
+}
+
+button.pulse, a.pulse{
+	border: none;
+	background-color: #000;
+	padding: .8rem 1.5rem;
+	color: #fff;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition: .4s;
+	position: relative;
+	overflow: hidden;
+
+	&:hover{
+		transition: .1s;
+		transform: scale(1.05);
+
+		&:hover{
+			&:after{
+				transition: .4s;
+				opacity: 1;
+				transform: scale(1);
+				background-color: rgba( #fff , 0 );
+			}
+		}
+	}
+	&:after{
+		transition: 0s;
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 50rem;
+		background-color: #fff;
+		opacity: 0;
+		transform: scale(.6);
+	}
+}
+
+input.default{
+	background-color: transparent;
+	border: none;
+	border: solid .1rem #fff;
+	padding: .5rem 1rem;
+	color: #000;
+	font-weight: 500;
+	border-radius: 10rem;
+}
+select.default{
+	background-color: transparent;
+	border: none;
+	border: solid .1rem #fff;
+	padding: .5rem 1rem;
+	color: #000;
+	font-weight: 500;
+	border-radius: 10rem;
+}
+
+a.default{
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+}
+h1.default{
+	color: rgba( $c1 , .3 );
+	font-size: 2rem;
+	margin: 0;
+	font-weight: 300;
+	text-align: center;
+}
+h2.default{
+	font-weight: 300;
+	font-size: 1.5rem;
+	text-align: center;
+	color: rgba( $c1 , .5 );
+	margin: 0;
+}
+
+hr.default{
+	display: block;
+	clear: both;
+	margin: 1rem auto;
+	width: 100%;
+	border: none;
+	height: .072rem;
+	background-color: rgba( $c1 , .1 );
+}
+hr.ghost{
+	opacity: 0;
+}
+hr.half{
+	width: 15%;
+}
+
+input.default[type="checkbox"], input.default[type="radio"]{
+	position: relative;
+	width: 2rem;
+	height: 2rem;
+	z-index: +1;
+	display: inline-block;
+	margin: 0;
+	margin-right: 5rem;
+	cursor: pointer;
+	opacity: 0;
+}
+label.default{
+	font-size: .9rem;
+}
+label.default.checkbox{
+	padding-left: 1rem;
+	font-weight: 400;
+	height: 2rem;
+	color: $c1;
+	vertical-align: top;
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+	transition: all .1s;
+	left: -5rem;
+
+	&:after{
+		content: '';
+		position: absolute;
+		top: .5rem;
+		left: -1.5rem;
+		width: 1rem;
+		height: 1rem;
+		background-color: rgba( $c1 , 1 );
+		border-radius: 10rem;
+		transition: all .2s;
+		transform: scale(.5);
+		opacity: .2;
+	}
+	&:before{
+		content: '';
+		position: absolute;
+		left: -2rem;
+		width: 2rem;
+		height: 2rem;
+		background-color: rgba( $c1 , .2 );
+		border-radius: 10rem;
+		transition: all .3s;
+	}
+}
+
+input.default[type="checkbox"]:checked + label.default.checkbox:before, input.default[type="radio"]:checked + label.default.checkbox:before{
+	background-color: rgba( $c1 , 1 );
+	transform: scale(1.1);
+}
+input.default[type="checkbox"]:checked + label.default.checkbox:after, input.default[type="radio"]:checked + label.default.checkbox:after{
+	transform: scale(1);
+	background-color: #fff;
+	opacity: 1;
+}
+input.default[type="checkbox"]:not(:checked) + label.default.checkbox, input.default[type="radio"]:checked + label.default.checkbox:after{
+}
+
+@mixin gradient($from, $to, $stop: 100%) {
+  background-color: $from;
+  background-image: linear-gradient(to right, $from 0%, $to $stop);
+}
+@mixin bgGradient($from, $to, $stop: 100%) {
+  background-color: $from;
+  background-image: linear-gradient(to bottom, $from 0%, $to $stop);
+}
+
+@mixin placeholder(){
+	&::-webkit-input-placeholder {
+	  @content;
+	}
+	&::-moz-placeholder {
+	  @content;
+	}
+	&:-ms-input-placeholder {
+	  @content;
+	}
+	&:-moz-placeholder {
+	  @content;
+	}
+}
+
+@mixin onMed(){
+	@media (max-width: 1335px){
+		@content;
+	}
+}
+@mixin onCustom($value){
+	@media (max-width: #{$value}px){
+		@content;
+	}
+}
+@mixin onMin(){
+	@media (max-width: 1000px), (any-hover: none) and (max-width: 1400px){
+		@content;
+	}
+}
+@mixin onSm(){
+	@media (max-width: 450px), (any-hover: none) and (max-width: 450px){
+		@content;
+	}
+}

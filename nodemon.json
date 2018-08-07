@@ -1,0 +1,3 @@
+{
+	"ignore": ["src/scripts", "src/scss", "public"]
+}
